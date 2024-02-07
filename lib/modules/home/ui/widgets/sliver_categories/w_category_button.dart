@@ -12,7 +12,6 @@ final List<String> categories = [
   "Reebok",
 ];
 
-
 class CategoryButton extends StatelessWidget {
   const CategoryButton({
     super.key,
@@ -34,11 +33,13 @@ class CategoryButton extends StatelessWidget {
         onPressed: () {
           controller.changeCategory(index);
         },
-        child: CustomText(
-          text: categories[index],
-          color: controller.isSelectedCategoryEqualsIndex(index)
-              ? ThemeColors.white
-              : ThemeColors.secondary.withOpacity(0.5),
+        child: FittedBox(
+          child: CustomText(
+            text: categories[index],
+            color: controller.isSelectedCategoryEqualsIndex(index)
+                ? ThemeColors.white
+                : ThemeColors.secondary.withOpacity(0.5),
+          ),
         ),
       ),
     );
