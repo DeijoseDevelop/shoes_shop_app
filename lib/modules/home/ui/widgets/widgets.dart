@@ -1,3 +1,4 @@
+export 'package:shoes_shop_app/modules/home/ui/widgets/w_dot.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/product_detail/w_product_detail_header.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/product_detail/w_product_detail_price_name.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/sliver_categories/w_sliver_categories.dart';

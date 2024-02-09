@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_shop_app/modules/home/ui/widgets/widgets.dart';
 import 'package:shoes_shop_app/utils/colors.dart';
 import 'package:shoes_shop_app/utils/responsive.dart';
 
@@ -39,39 +40,18 @@ class ProductDetailHeader extends StatelessWidget {
           bottom: 20,
           left: responsive.widthResponsive(45),
           child: Row(
-            children: <Dot>[
+            children: <Widget>[
               const Dot(color: ThemeColors.primary),
+              const SizedBox(width: 4.0),
               Dot(color: ThemeColors.primary.withOpacity(0.7)),
+              const SizedBox(width: 4.0),
               Dot(color: ThemeColors.primary.withOpacity(0.5)),
+              const SizedBox(width: 4.0),
               Dot(color: ThemeColors.primary.withOpacity(0.4)),
             ],
           ),
         )
       ],
-    );
-  }
-}
-
-class Dot extends StatelessWidget {
-  const Dot({
-    required this.color,
-    super.key,
-  });
-
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 2.0),
-      child: Container(
-        width: 6,
-        height: 6,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(100),
-        ),
-      ),
     );
   }
 }
