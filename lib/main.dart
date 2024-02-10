@@ -22,7 +22,7 @@ Future<void> main() async {
   // await dotenv.load(fileName: ".env");
 
   // runApp() es una función global de Flutter que toma un Widget como su argumento y lo convierte en
-  // el contenido de la ventana de la aplicación. En este caso, se está pasando una instancia constante de MyApp(),
+  // el contenido ,./de la ventana de la aplicación. En este caso, se está pasando una instancia constante de MyApp(),
   // que es probablemente una clase que extiende StatelessWidget o StatefulWidget, representando el widget raíz de tu aplicación.
   // La palabra clave `const` se utiliza para indicar que la instancia de MyApp no cambiará durante el tiempo de vida de la aplicación,
   // lo que ayuda a mejorar el rendimiento.

@@ -1,3 +1,7 @@
+export 'package:shoes_shop_app/modules/home/ui/widgets/product_detail/w_select_size_widget.dart';
+export 'package:shoes_shop_app/modules/home/ui/widgets/product_detail/w_bettet_dot.dart';
+export 'package:shoes_shop_app/modules/home/ui/widgets/product_detail/w_select_color_widget.dart';
+export 'package:shoes_shop_app/modules/home/ui/widgets/product_detail/w_product_detail_divider.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/w_dot.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/product_detail/w_product_detail_header.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/product_detail/w_product_detail_price_name.dart';
