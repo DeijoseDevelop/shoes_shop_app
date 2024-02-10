@@ -7,6 +7,7 @@ class Product {
   final double price;
   final String size;
   final String color;
+  final bool isFavorite;
 
   Product({
     required this.id,
@@ -15,6 +16,7 @@ class Product {
     required this.price,
     required this.size,
     required this.color,
+    this.isFavorite = false,
   });
 
   Product copyWith({
@@ -24,6 +26,7 @@ class Product {
     double? price,
     String? size,
     String? color,
+    bool? isFavorite,
   }) =>
       Product(
         id: id ?? this.id,
@@ -32,6 +35,7 @@ class Product {
         price: price ?? this.price,
         size: size ?? this.size,
         color: color ?? this.color,
+        isFavorite: isFavorite ?? this.isFavorite,
       );
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -41,6 +45,7 @@ class Product {
         price: json["price"]?.toDouble(),
         size: json["size"],
         color: json["color"],
+        isFavorite: json["is_favorite"] ?? false,
       );
 
   Map<String, dynamic> toJson() => {
@@ -50,6 +55,7 @@ class Product {
         "price": price,
         "size": size,
         "color": color,
+        "isFavorite": isFavorite,
       };
 
   static List<Product> productsFromJson(String str) =>
