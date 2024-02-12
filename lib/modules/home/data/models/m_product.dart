@@ -7,7 +7,7 @@ class Product {
   final double price;
   final String size;
   final String color;
-  final bool isFavorite;
+  bool isFavorite;
 
   Product({
     required this.id,
@@ -57,6 +57,10 @@ class Product {
         "color": color,
         "isFavorite": isFavorite,
       };
+
+  void setIsFavorite(bool isFavorite) {
+    this.isFavorite = isFavorite;
+  }
 
   static List<Product> productsFromJson(String str) =>
       List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));

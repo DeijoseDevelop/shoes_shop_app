@@ -13,6 +13,8 @@ class AppPages {
         return CupertinoPageRoute(builder: (_) => const HomePage());
       case AppRoutes.productDetail:
         return CupertinoPageRoute(builder: (_) => const ProductDetailPage());
+      case AppRoutes.favorites:
+        return CupertinoPageRoute(builder: (_) => const FavoritePage());
       default:
         return CupertinoPageRoute(builder: (_) => const Scaffold());
     }

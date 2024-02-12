@@ -12,7 +12,7 @@ export 'package:shoes_shop_app/modules/home/ui/widgets/sliver_discount_product/w
 export 'package:shoes_shop_app/modules/home/ui/widgets/sliver_discount_product/w_discount_product_right.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/sliver_discount_product/w_discount_product_left.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/sliver_discount_product/w_sliver_discount_product.dart';
-export 'package:shoes_shop_app/modules/home/ui/widgets/product_list/w_product_widget.dart';
+export 'package:shoes_shop_app/modules/home/ui/widgets/w_product_widget.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/product_list/w_product_title_price_widget.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/product_list/w_product_image.dart';
 export 'package:shoes_shop_app/modules/home/ui/widgets/product_list/w_favorite_icon.dart';

@@ -34,7 +34,7 @@ class ProductWidget extends StatelessWidget {
             children: <Widget>[
               const ProductImage(),
               ProductTitlePriceWidget(product: product),
-              const FavoriteIcon(),
+              FavoriteIcon(product: product),
             ],
           ),
         ),
