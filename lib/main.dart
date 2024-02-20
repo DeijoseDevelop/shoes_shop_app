@@ -9,23 +9,10 @@ import 'package:shoes_shop_app/routes/app_routes.dart';
 import 'package:shoes_shop_app/utils/injector.dart';
 
 Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized() es necesario para inicializar el sistema de binding para los widgets
-  // antes de que se ejecute cualquier otra acción. Es especialmente importante cuando se realizan tareas
-  // asíncronas en el método main() antes de llamar a runApp(). Esto asegura que el framework de Flutter
-  // esté correctamente inicializado antes de que la aplicación comience a ejecutarse.
   WidgetsFlutterBinding.ensureInitialized();
 
-  // dotenv.load(fileName: ".env") carga variables de entorno desde un archivo llamado ".env".
-  // Esto es útil para manejar secretos y claves API de manera segura, sin hardcodearlos en el código fuente.
-  // La operación es asíncrona y se espera a que termine con `await`, asegurando que todas las variables de entorno
-  // estén disponibles antes de continuar con la ejecución de la aplicación.
   // await dotenv.load(fileName: ".env");
 
-  // runApp() es una función global de Flutter que toma un Widget como su argumento y lo convierte en
-  // el contenido ,./de la ventana de la aplicación. En este caso, se está pasando una instancia constante de MyApp(),
-  // que es probablemente una clase que extiende StatelessWidget o StatefulWidget, representando el widget raíz de tu aplicación.
-  // La palabra clave `const` se utiliza para indicar que la instancia de MyApp no cambiará durante el tiempo de vida de la aplicación,
-  // lo que ayuda a mejorar el rendimiento.
   runApp(const AppState());
 }
 
@@ -35,7 +22,9 @@ class AppState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: Injector.dependencies, child: const MyApp());
+      providers: Injector.dependencies,
+      child: const MyApp(),
+    );
   }
 }
 
