@@ -13,10 +13,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
+    context.read<HomeBloc>().add(StartedPageControllerEvent());
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      HomeController controller = context.read<HomeController>();
       ProductController productController = context.read<ProductController>();
-      controller.startPageController();
       productController.getProducts();
     });
     super.initState();
@@ -25,8 +24,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     super.dispose();
-    HomeController controller = context.read<HomeController>();
-    controller.disposePageController();
+    HomeBloc controller = context.read<HomeBloc>();
+    controller.add(FinishedPageControllerEvent());
+    controller.close();
   }
 
   @override
