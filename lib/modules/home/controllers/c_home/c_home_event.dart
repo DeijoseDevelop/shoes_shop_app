@@ -8,12 +8,12 @@ sealed class HomeEvent extends Equatable {
 }
 
 final class ChangePageEvent extends HomeEvent {
-  const ChangePageEvent({ this.page });
+  const ChangePageEvent({this.page});
 
   final int? page;
 
   @override
-  List<Object?> get props => [ page ];
+  List<Object?> get props => [page];
 }
 
 final class StartedPageControllerEvent extends HomeEvent {}

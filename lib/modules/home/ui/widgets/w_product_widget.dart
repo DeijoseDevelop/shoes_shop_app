@@ -18,7 +18,11 @@ class ProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<ProductController>().getCurrentProduct(product);
+        context.read<ProductBloc>().add(
+              GetCurrentProductEvent(
+                product: product,
+              ),
+            );
         Navigator.of(context).pushNamed(AppRoutes.productDetail);
       },
       child: Padding(
