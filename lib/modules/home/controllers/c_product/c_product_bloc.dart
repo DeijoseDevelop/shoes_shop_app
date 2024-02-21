@@ -44,7 +44,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     ToggleFavoriteProductEvent event,
     Emitter emit,
   ) {
-    event.product.setIsFavorite(!event.product.isFavorite);
+    _changeProductIsFavorite(event);
+    List<Product> copyFavoriteProducts = _addProductFavorite(state, event);
+    emit(state.copyWith(favoriteProducts: copyFavoriteProducts));
+  }
+
+  List<Product> _addProductFavorite(
+    ProductState state,
+    ToggleFavoriteProductEvent event,
+  ) {
     List<Product> copyFavoriteProducts = [...state.favoriteProducts];
 
     if (!event.product.isFavorite) {
@@ -53,6 +61,10 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       copyFavoriteProducts.add(event.product);
     }
 
-    emit(state.copyWith(favoriteProducts: copyFavoriteProducts));
+    return copyFavoriteProducts;
+  }
+
+  void _changeProductIsFavorite(ToggleFavoriteProductEvent event) {
+    event.product.setIsFavorite(!event.product.isFavorite);
   }
 }
