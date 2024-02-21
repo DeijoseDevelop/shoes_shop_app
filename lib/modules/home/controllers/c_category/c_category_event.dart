@@ -15,12 +15,3 @@ final class ChangeCategory extends CategoryEvent {
   @override
   List<Object?> get props => [ categoryIndex ];
 }
-
-final class SelectedCategory extends CategoryEvent {
-  const SelectedCategory({ required this.index });
-
-  final int index;
-
-  @override
-  List<Object?> get props => [ index ];
-}

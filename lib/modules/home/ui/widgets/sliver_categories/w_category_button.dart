@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoes_shop_app/modules/common/ui/widgets/widgets.dart';
@@ -24,7 +22,6 @@ class CategoryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("$index");
     return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (BuildContext context, CategoryState state) {
         return Center(
@@ -37,7 +34,6 @@ class CategoryButton extends StatelessWidget {
             onPressed: () {
               CategoryBloc controller = context.read<CategoryBloc>();
               controller.add(ChangeCategory(categoryIndex: index));
-              controller.add(SelectedCategory(index: index));
             },
             child: FittedBox(
               child: CustomText(
