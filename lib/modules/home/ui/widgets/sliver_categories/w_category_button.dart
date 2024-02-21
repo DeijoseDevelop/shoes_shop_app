@@ -33,7 +33,7 @@ class CategoryButton extends StatelessWidget {
             ),
             onPressed: () {
               CategoryBloc controller = context.read<CategoryBloc>();
-              controller.add(ChangeCategory(categoryIndex: index));
+              controller.add(ChangeCategoryEvent(categoryIndex: index));
             },
             child: FittedBox(
               child: CustomText(

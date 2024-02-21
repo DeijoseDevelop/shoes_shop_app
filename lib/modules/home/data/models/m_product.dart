@@ -1,6 +1,9 @@
 import 'dart:convert';
 
-class Product {
+import 'package:equatable/equatable.dart';
+
+// ignore: must_be_immutable
+class Product extends Equatable {
   final int id;
   final String name;
   final String description;
@@ -66,4 +69,15 @@ class Product {
       List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
   static String productsToJson(List<Product> data) =>
       json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        description,
+        price,
+        size,
+        color,
+        isFavorite,
+      ];
 }

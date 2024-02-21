@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     context.read<HomeBloc>().add(StartedPageControllerEvent());
     context.read<ProductBloc>().add(GetProductsEvent());
+    context.read<CategoryBloc>().add(GetCategoriesEvent());
     super.initState();
   }
 

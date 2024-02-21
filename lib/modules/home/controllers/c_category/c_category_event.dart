@@ -7,11 +7,13 @@ sealed class CategoryEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-final class ChangeCategory extends CategoryEvent {
-  const ChangeCategory({ required this.categoryIndex });
+final class ChangeCategoryEvent extends CategoryEvent {
+  const ChangeCategoryEvent({required this.categoryIndex});
 
   final int categoryIndex;
 
   @override
-  List<Object?> get props => [ categoryIndex ];
+  List<Object?> get props => [categoryIndex];
 }
+
+final class GetCategoriesEvent extends CategoryEvent {}
