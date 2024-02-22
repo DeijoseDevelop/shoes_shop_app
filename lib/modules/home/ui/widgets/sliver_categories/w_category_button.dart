@@ -4,14 +4,6 @@ import 'package:shoes_shop_app/modules/common/ui/widgets/widgets.dart';
 import 'package:shoes_shop_app/modules/home/controllers/controllers.dart';
 import 'package:shoes_shop_app/utils/colors.dart';
 
-final List<String> categories = [
-  "All",
-  "Nike",
-  "Addidas",
-  "Puma",
-  "Reebok",
-];
-
 class CategoryButton extends StatelessWidget {
   const CategoryButton({
     super.key,
@@ -24,6 +16,10 @@ class CategoryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (BuildContext context, CategoryState state) {
+        ProductBloc productBloc = context.read<ProductBloc>();
+        if (state.categories == null) {
+          return const CircularProgressIndicator.adaptive();
+        }
         return Center(
           child: TextButton(
             style: ButtonStyle(
@@ -34,10 +30,17 @@ class CategoryButton extends StatelessWidget {
             onPressed: () {
               CategoryBloc controller = context.read<CategoryBloc>();
               controller.add(ChangeCategoryEvent(categoryIndex: index));
+              if (state.categories![index].id == 0) {
+                productBloc.add(const GetProductsEvent());
+              } else {
+                productBloc.add(
+                  GetProductsEvent(categoryName: state.categories![index].name),
+                );
+              }
             },
             child: FittedBox(
               child: CustomText(
-                text: categories[index],
+                text: state.categories![index].name,
                 color: state.selectedCategory == index
                     ? ThemeColors.white
                     : ThemeColors.secondary.withOpacity(0.5),

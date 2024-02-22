@@ -20,10 +20,46 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   Future<void> _onGetProductsEvent(GetProductsEvent event, Emitter emit) async {
     try {
       List<Product> response = await getProductsUseCase.call();
-      emit(state.copyWith(products: response));
+      List<Product> products = _filterProductsByName(response, event);
+
+      emit(state.copyWith(products: products));
     } catch (e) {
       log("$e");
     }
+  }
+
+  List<Product> _filterProductsByName(
+    List<Product> response,
+    GetProductsEvent event,
+  ) {
+    List<Product> products = [...response];
+
+    if (event.name != null) {
+      products = products.where((Product element) {
+        return element.name == event.name;
+      }).toList();
+    }
+
+    List<Product> productsByCategoryName = _filterProductsByCategoryName(
+      products,
+      event,
+    );
+
+    return productsByCategoryName;
+  }
+
+  List<Product> _filterProductsByCategoryName(
+    List<Product> currentProducts,
+    GetProductsEvent event,
+  ) {
+    List<Product> products = [...currentProducts];
+
+    if (event.categoryName != null) {
+      products = products.where((Product element) {
+        return element.category.name == event.categoryName;
+      }).toList();
+    }
+    return products;
   }
 
   void _onGetCurrentProductEvent(GetCurrentProductEvent event, Emitter emit) {
@@ -44,12 +80,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     ToggleFavoriteProductEvent event,
     Emitter emit,
   ) {
-    _changeProductIsFavorite(event);
-    List<Product> copyFavoriteProducts = _addProductFavorite(state, event);
+    changeProductIsFavorite(event);
+    List<Product> copyFavoriteProducts = addProductFavorite(state, event);
     emit(state.copyWith(favoriteProducts: copyFavoriteProducts));
   }
 
-  List<Product> _addProductFavorite(
+  List<Product> addProductFavorite(
     ProductState state,
     ToggleFavoriteProductEvent event,
   ) {
@@ -64,7 +100,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     return copyFavoriteProducts;
   }
 
-  void _changeProductIsFavorite(ToggleFavoriteProductEvent event) {
+  void changeProductIsFavorite(ToggleFavoriteProductEvent event) {
     event.product.setIsFavorite(!event.product.isFavorite);
   }
 }

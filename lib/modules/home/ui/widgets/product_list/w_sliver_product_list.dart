@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoes_shop_app/modules/common/ui/widgets/widgets.dart';
 import 'package:shoes_shop_app/modules/home/controllers/controllers.dart';
 import 'package:shoes_shop_app/modules/home/data/models/models.dart';
 import 'package:shoes_shop_app/modules/home/ui/widgets/widgets.dart';
@@ -17,9 +18,10 @@ class SliverProductList extends StatelessWidget {
           return SizedBox(
             width: 220,
             height: 250,
-            child: state.products == null
+            child: state.products == null ||
+                    (state.products != null && state.products!.isEmpty)
                 ? const Center(
-                    child: CircularProgressIndicator.adaptive(),
+                    child: CustomText(text: "No Products"),
                   )
                 : ListView.builder(
                     itemBuilder: (BuildContext context, int index) {
