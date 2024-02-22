@@ -10,8 +10,8 @@ List<Category> categories = const [
   Category(id: 2, name: 'Adidas'),
   Category(id: 3, name: 'Puma'),
   Category(id: 4, name: 'Reebok'),
-  Category(id: 8, name: 'Converse'),
-  Category(id: 10, name: 'Fila')
+  Category(id: 5, name: 'Converse'),
+  Category(id: 6, name: 'Fila')
 ];
 
 List<Product> products = [
