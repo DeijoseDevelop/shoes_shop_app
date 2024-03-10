@@ -16,8 +16,14 @@ class BottonNavigatorWidget extends StatelessWidget {
           unselectedItemColor: ThemeColors.secondary,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          onTap: (int? page) {
-            context.read<HomeBloc>().add(ChangePageEvent(page: page));
+          onTap: (int? page) async {
+            HomeBloc controller = context.read<HomeBloc>();
+            controller.add(ChangePageEvent(page: page));
+            controller.state.pageController!.animateToPage(
+              page!,
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.easeIn,
+            );
           },
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(

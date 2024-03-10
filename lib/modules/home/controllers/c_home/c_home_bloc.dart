@@ -11,11 +11,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   void _onChangePage(ChangePageEvent event, Emitter emit) {
-    state.pageController!.animateToPage(
-      event.page!,
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeIn,
-    );
     emit(state.copyWith(
       currentPage: event.page,
     ));
@@ -36,8 +31,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     FinishedPageControllerEvent event,
     Emitter emit,
   ) {
-    state.pageController!.dispose();
-    state.pageController!.removeListener(() {});
     emit(state.copyWith(
       pageController: null,
     ));

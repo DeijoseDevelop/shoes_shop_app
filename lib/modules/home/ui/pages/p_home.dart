@@ -25,6 +25,8 @@ class _HomePageState extends State<HomePage> {
     HomeBloc homeController = context.read<HomeBloc>();
     ProductBloc productController = context.read<ProductBloc>();
     homeController.add(FinishedPageControllerEvent());
+    homeController.state.pageController!.dispose();
+    homeController.state.pageController!.removeListener(() {});
     homeController.close();
     productController.close();
   }
