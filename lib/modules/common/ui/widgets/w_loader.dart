@@ -9,7 +9,7 @@ class _Loader extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator.adaptive(),
         ),
       ),
     );

@@ -14,10 +14,10 @@ class FavoritePage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            title: const TitleText(text: 'Favorite'),
+            title: TitleText(text: 'Favorite'),
           ),
           body: state.favoriteProducts.isEmpty
-              ? const Center(
+              ? Center(
                   child: TitleText(text: "No products"),
                 )
               : CustomScrollView(

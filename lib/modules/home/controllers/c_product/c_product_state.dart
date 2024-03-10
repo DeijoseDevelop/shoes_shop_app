@@ -1,30 +1,36 @@
 import 'package:equatable/equatable.dart';
 import 'package:shoes_shop_app/modules/home/data/models/models.dart';
 
+enum ProductsOverviewStatus { initial, loading, success, failure }
+
 final class ProductState extends Equatable {
   const ProductState({
-    this.products,
-    required this.favoriteProducts,
+    this.status = ProductsOverviewStatus.initial,
+    this.products = const [],
+    this.favoriteProducts = const [],
     this.currentProduct,
     this.searchedProduct,
   });
 
-  final List<Product>? products;
+  final ProductsOverviewStatus status;
+  final List<Product> products;
   final List<Product> favoriteProducts;
   final Product? currentProduct;
   final Product? searchedProduct;
 
   ProductState copyWith({
-    List<Product>? products,
-    List<Product>? favoriteProducts,
-    Product? currentProduct,
-    Product? searchedProduct,
+    ProductsOverviewStatus Function()? status,
+    List<Product> Function()? products,
+    List<Product> Function()? favoriteProducts,
+    Product Function()? currentProduct,
+    Product Function()? searchedProduct,
   }) {
     return ProductState(
-      products: products ?? this.products,
-      favoriteProducts: favoriteProducts ?? this.favoriteProducts,
-      currentProduct: currentProduct ?? this.currentProduct,
-      searchedProduct: searchedProduct ?? this.searchedProduct,
+      status: status != null ? status() : this.status,
+      products: products != null ? products() : this.products,
+      favoriteProducts: favoriteProducts != null ? favoriteProducts() : this.favoriteProducts,
+      currentProduct: currentProduct != null ? currentProduct() : this.currentProduct,
+      searchedProduct: searchedProduct != null ? searchedProduct() : this.searchedProduct,
     );
   }
 

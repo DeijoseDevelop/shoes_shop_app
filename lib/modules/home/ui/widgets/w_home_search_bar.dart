@@ -42,7 +42,7 @@ class HomeSearchBar extends StatelessWidget {
           suggestionsBuilder:
               (BuildContext context, SearchController controller) {
             return List<ListTile>.generate(5, (int index) {
-              final Product item = state.products![index];
+              final Product item = state.products[index];
               return ListTile(
                 title: CustomText(text: item.name),
                 onTap: () {

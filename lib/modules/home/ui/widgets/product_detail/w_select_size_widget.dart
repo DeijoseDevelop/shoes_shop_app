@@ -21,7 +21,7 @@ class _SelectSizeWidgetState extends State<SelectSizeWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const TitleText(text: "Size"),
+          TitleText(text: "Size"),
           const SizedBox(height: 10.0),
           Row(
             children: List.generate(

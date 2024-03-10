@@ -8,7 +8,7 @@ import 'package:shoes_shop_app/modules/home/data/use_cases/uc_home.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ProductBloc({
     required this.getProductsUseCase,
-  }) : super(const ProductState(favoriteProducts: [])) {
+  }) : super(const ProductState()) {
     on<GetProductsEvent>(_onGetProductsEvent);
     on<GetCurrentProductEvent>(_onGetCurrentProductEvent);
     on<SearchProductByIdEvent>(_onSearchProductByIdEvent);
@@ -19,21 +19,25 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   Future<void> _onGetProductsEvent(GetProductsEvent event, Emitter emit) async {
     try {
+      emit(state.copyWith(status: () => ProductsOverviewStatus.loading));
       List<Product> response = await getProductsUseCase.call();
-      emit(state.copyWith(products: response));
+      emit(state.copyWith(
+        products: () => response,
+        status: () => ProductsOverviewStatus.success,
+      ));
     } catch (e) {
       log("$e");
     }
   }
 
   void _onGetCurrentProductEvent(GetCurrentProductEvent event, Emitter emit) {
-    emit(state.copyWith(currentProduct: event.product));
+    emit(state.copyWith(currentProduct: () => event.product));
   }
 
   void _onSearchProductByIdEvent(SearchProductByIdEvent event, Emitter emit) {
     emit(
       state.copyWith(
-        searchedProduct: state.products?.firstWhere(
+        searchedProduct: () => state.products.firstWhere(
           (element) => element.id == event.id,
         ),
       ),
@@ -46,7 +50,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ) {
     _changeProductIsFavorite(event);
     List<Product> copyFavoriteProducts = _addProductFavorite(state, event);
-    emit(state.copyWith(favoriteProducts: copyFavoriteProducts));
+    emit(state.copyWith(favoriteProducts: () => copyFavoriteProducts));
   }
 
   List<Product> _addProductFavorite(

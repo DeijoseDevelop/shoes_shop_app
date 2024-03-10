@@ -14,7 +14,7 @@ class DiscountProductRight extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const TitleText(
+        TitleText(
           text: "25% Discount",
           color: ThemeColors.primary,
         ),

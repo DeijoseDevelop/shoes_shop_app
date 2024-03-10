@@ -47,7 +47,7 @@ class SplashTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TitleText(
+    return TitleText(
       text: "Shoes Shop App",
       fontSize: 30,
     );

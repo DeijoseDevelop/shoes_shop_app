@@ -15,8 +15,8 @@ class DiscountProductButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: CustomText(
           text: "Shop now",
           color: ThemeColors.white,

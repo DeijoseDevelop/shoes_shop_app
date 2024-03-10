@@ -73,8 +73,9 @@ class HomeRepository extends BaseRepository {
     List<Map<String, dynamic>> mapProducts =
         products.map((Product product) => product.toJson()).toList();
 
-    return Future.value(
-      http.Response(json.encode(mapProducts), 200),
+    return await Future.delayed(
+      const Duration(seconds: 2),
+      () => http.Response(json.encode(mapProducts), 200),
     );
   }
 
@@ -82,8 +83,9 @@ class HomeRepository extends BaseRepository {
     List<Map<String, dynamic>> mapCategories =
         categories.map((Category category) => category.toJson()).toList();
 
-    return Future.value(
-      http.Response(json.encode(mapCategories), 200),
+    return await Future.delayed(
+      const Duration(seconds: 2),
+      () => http.Response(json.encode(mapCategories), 200),
     );
   }
 }

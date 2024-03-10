@@ -43,7 +43,7 @@ class _ProductDetailRightButton extends StatelessWidget {
       child: SizedBox(
         width: responsive.widthResponsive(30.0),
         height: 45.0,
-        child: const Center(
+        child: Center(
           child: CustomText(
             text: "By Now",
             color: ThemeColors.primary,
@@ -70,7 +70,7 @@ class _ProductDetailLeftbutton extends StatelessWidget {
       child: SizedBox(
         width: responsive.widthResponsive(35.0),
         height: 45.0,
-        child: const Center(
+        child: Center(
           child: CustomText(
             text: "Add to Cart",
             color: ThemeColors.white,

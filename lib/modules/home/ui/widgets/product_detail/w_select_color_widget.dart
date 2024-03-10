@@ -8,14 +8,14 @@ class SelectColorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(20),
+    return Padding(
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TitleText(text: "Select color"),
-          SizedBox(height: 10.0),
-          Row(
+          const SizedBox(height: 10.0),
+          const Row(
             children: <Widget>[
               Dot(
                 size: Size(20.0, 20.0),
