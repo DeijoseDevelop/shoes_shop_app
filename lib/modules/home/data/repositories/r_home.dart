@@ -4,6 +4,16 @@ import "package:http/http.dart" as http;
 import 'package:shoes_shop_app/modules/common/data/repositories/r_base.dart';
 import 'package:shoes_shop_app/modules/home/data/models/models.dart';
 
+List<Category> categories = const [
+  Category(id: 0, name: 'All'),
+  Category(id: 1, name: 'Nike'),
+  Category(id: 2, name: 'Adidas'),
+  Category(id: 3, name: 'Puma'),
+  Category(id: 4, name: 'Reebok'),
+  Category(id: 5, name: 'Converse'),
+  Category(id: 6, name: 'Fila')
+];
+
 List<Product> products = [
   Product(
     id: 1,
@@ -12,6 +22,7 @@ List<Product> products = [
     price: 19.99,
     size: "M",
     color: "Azul",
+    category: categories[0],
   ),
   Product(
     id: 2,
@@ -20,6 +31,7 @@ List<Product> products = [
     price: 19.99,
     size: "M",
     color: "Azul",
+    category: categories[1],
   ),
   Product(
     id: 3,
@@ -28,6 +40,7 @@ List<Product> products = [
     price: 19.99,
     size: "M",
     color: "Azul",
+    category: categories[0],
   ),
   Product(
     id: 4,
@@ -36,6 +49,7 @@ List<Product> products = [
     price: 19.99,
     size: "M",
     color: "Azul",
+    category: categories[2],
   ),
   Product(
     id: 5,
@@ -44,6 +58,7 @@ List<Product> products = [
     price: 19.99,
     size: "M",
     color: "Azul",
+    category: categories[3],
   ),
   Product(
     id: 6,
@@ -52,20 +67,8 @@ List<Product> products = [
     price: 19.99,
     size: "M",
     color: "Azul",
+    category: categories[4],
   ),
-];
-
-List<Category> categories = const [
-  Category(id: 1, name: 'Nike'),
-  Category(id: 2, name: 'Adidas'),
-  Category(id: 3, name: 'Puma'),
-  Category(id: 4, name: 'Reebok'),
-  Category(id: 5, name: 'New Balance'),
-  Category(id: 6, name: 'Under Armour'),
-  Category(id: 7, name: 'Vans'),
-  Category(id: 8, name: 'Converse'),
-  Category(id: 9, name: 'Salomon'),
-  Category(id: 10, name: 'Fila')
 ];
 
 class HomeRepository extends BaseRepository {

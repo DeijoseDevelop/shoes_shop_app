@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:shoes_shop_app/modules/home/data/models/models.dart';
 
 // ignore: must_be_immutable
 class Product extends Equatable {
@@ -10,6 +11,7 @@ class Product extends Equatable {
   final double price;
   final String size;
   final String color;
+  final Category category;
   bool isFavorite;
 
   Product({
@@ -19,6 +21,7 @@ class Product extends Equatable {
     required this.price,
     required this.size,
     required this.color,
+    required this.category,
     this.isFavorite = false,
   });
 
@@ -29,6 +32,7 @@ class Product extends Equatable {
     double? price,
     String? size,
     String? color,
+    Category? category,
     bool? isFavorite,
   }) =>
       Product(
@@ -38,6 +42,7 @@ class Product extends Equatable {
         price: price ?? this.price,
         size: size ?? this.size,
         color: color ?? this.color,
+        category: category ?? this.category,
         isFavorite: isFavorite ?? this.isFavorite,
       );
 
@@ -48,6 +53,7 @@ class Product extends Equatable {
         price: json["price"]?.toDouble(),
         size: json["size"],
         color: json["color"],
+        category: Category.fromJson(json["category"]),
         isFavorite: json["is_favorite"] ?? false,
       );
 
@@ -58,6 +64,7 @@ class Product extends Equatable {
         "price": price,
         "size": size,
         "color": color,
+        "category": category.toJson(),
         "isFavorite": isFavorite,
       };
 
@@ -78,6 +85,7 @@ class Product extends Equatable {
         price,
         size,
         color,
+        category,
         isFavorite,
       ];
 }

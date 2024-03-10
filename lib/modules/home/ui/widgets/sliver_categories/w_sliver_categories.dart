@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoes_shop_app/modules/home/controllers/controllers.dart';
 import 'package:shoes_shop_app/modules/home/ui/widgets/widgets.dart';
-
-final List<String> categories = [
-  "All",
-  "Nike",
-  "Addidas",
-  "Puma",
-  "Reebok",
-];
 
 class SliverCategories extends StatefulWidget {
   const SliverCategories({
@@ -22,18 +16,24 @@ class _SliverCategoriesState extends State<SliverCategories> {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: SizedBox(
-        width: 70,
-        height: 55,
-        child: ListView.builder(
-          itemBuilder: (BuildContext context, int index) {
-            return CategoryElement(index: index);
-          },
-          scrollDirection: Axis.horizontal,
-          itemCount: categories.length,
-        ),
+      child: BlocBuilder<CategoryBloc, CategoryState>(
+        builder: (BuildContext context, CategoryState state) {
+          if (state.categories == null) {
+            return const CircularProgressIndicator.adaptive();
+          }
+          return SizedBox(
+            width: 70,
+            height: 55,
+            child: ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return CategoryElement(index: index);
+              },
+              scrollDirection: Axis.horizontal,
+              itemCount: state.categories!.length,
+            ),
+          );
+        },
       ),
     );
   }
 }
-
